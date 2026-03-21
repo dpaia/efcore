@@ -1,0 +1,36 @@
+{
+  "instance_id": "dotnet__efcore-25702",
+  "base_commit": "22644dcbd101426f3a4ff578adb09ef1d78340c4",
+  "benchmark_type": "codegen",
+  "expected": {
+    "FAIL_TO_PASS": [
+      "Not initialized yet"
+    ],
+    "PASS_TO_PASS": [
+      "Not initialized yet"
+    ]
+  },
+  "eval": {
+    "test_framework": "",
+    "env_setup_version": "1.0",
+    "run_tests_version": "1.0",
+    "files": {
+      "scripts/install.sh": "git submodule update --init --recursive\nrm -rf ./test/EFCore.Specification.Tests/CustomConvertersTestBase.cs\nrm -rf ./test/EFCore.InMemory.FunctionalTests/CustomConvertersInMemoryTest.cs\ndotnet build ./test/EFCore.Tests/EFCore.Tests.csproj -p:TreatWarningsAsErrors=false"
+    }
+  },
+  "environment": {
+    "project_root": "/app",
+    "dockerfile_tag": "dotnet__efcore"
+  },
+  "language": "csharp",
+  "env_setup_version": "1.0",
+  "run_tests_version": "1.0",
+  "test_framework": "",
+  "test_framework_flag": "",
+  "test_project": "./test/EFCore.Tests/EFCore.Tests.csproj",
+  "test_logger": "trx;LogFileName=$ARTIFACTS_DIR/tests.log",
+  "execution_flags": "-Dqodana.net.solution=All.sln",
+  "fields": {
+    "repo": "dotnet/efcore"
+  }
+}
