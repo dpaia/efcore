@@ -28,6 +28,8 @@ RUN apt-get update && \
     libsecret-1-0 \
     libsecret-1-dev \
     rsync \
+    python3 \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 # Older versions need for tests executions in some tasks.
@@ -36,11 +38,6 @@ RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh && \
     ./dotnet-install.sh --version 8.0.410 --install-dir /usr/share/dotnet
 
 ENV PATH="/usr/share/dotnet:${PATH}"
-
-# Install Python 3 (system python3.12 on Noble)
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/{{ instance.owner }}/{{ instance.repo_name }}.git /app
 WORKDIR /app
