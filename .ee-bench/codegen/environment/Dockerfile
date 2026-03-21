@@ -37,15 +37,10 @@ RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh && \
 
 ENV PATH="/usr/share/dotnet:${PATH}"
 
-# Install Python 3.10
+# Install Python 3 (system python3.12 on Noble)
 RUN apt-get update && \
-    apt-get install -y software-properties-common curl && \
-    add-apt-repository ppa:deadsnakes/ppa && \
-    apt-get update && \
-    apt-get install -y python3.10 python3.10-distutils && \
-    curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10 && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 && \
-    python --version
+    apt-get install -y python3 python3-pip && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/{{ instance.owner }}/{{ instance.repo_name }}.git /app
 WORKDIR /app
